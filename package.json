@@ -8,7 +8,7 @@
     "dev": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Javier Álvarez",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
