@@ -1,6 +1,6 @@
 const express = require('express');
-
 const db = require('./src/utils/db')
+
 db.connectDB();
 
 //All routes import
@@ -16,21 +16,6 @@ server.use(express.json());
 server.use(express.urlencoded( { extended: true }));
 
 
-// const router = express.Router();
-
-// router.post('/types', (req, res) => {
-//     return res.status(200).json('POST a types')
-// });
-
-// router.get('/coffee', (req, res) => {
-//     const coffee = ['Café con leche', 'Café sólo', 'Café cortado']
-//     return res.status(200).json(coffee);
-// })
-
-// router.get('/', (req, result) => {
-// console.log(result)
-//     return result.status(200).json('El servidor está funcionando correctamente Javieeeeeeee')
-// })
 //Configuración de todas las rutas de nuestro servidor
 server.use('/' ,indexRoutes);
 server.use('/producers', producersRoutes)

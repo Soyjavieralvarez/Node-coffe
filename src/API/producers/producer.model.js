@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 
 const producerSchema = new mongoose.Schema(
     {
-        name: {
+        nameProducter: {
+            type: String,
+            required: [true, 'Debes poner el nombre del productor']
+        },
+
+        nameCoffee:{
             type: String,
             required: [true, 'Debes poner el nombre del productor']
         },
@@ -23,12 +28,12 @@ const producerSchema = new mongoose.Schema(
         },
 
         product: {
-            type: String,
+            type: [String],
             required: ['beans', 'capsules', 'ground']
         },
 
         kindOfCoffee: {
-            type: String,
+            type: [String],
             required: ['caffeine', 'decaffeinated']
         },
 
@@ -38,6 +43,6 @@ const producerSchema = new mongoose.Schema(
     }
     );
 
-const Producer = mongoose.model('producers');
+const Producer = mongoose.model('producers', producerSchema);
 
 module.exports = Producer;
