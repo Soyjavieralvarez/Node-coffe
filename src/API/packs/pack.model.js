@@ -5,7 +5,7 @@ const packSchema = new mongoose.Schema(
      //Guardamos una ID, que haga referencia a un elemento creado en la colección producer.
         namePack: {
             type:[String],
-            enum:["pack only you", "pack couple of love", "pack family master of coffee"]
+            required: [true, 'Debes poner el nombre del pack'],
         },
 
         // image: {
@@ -29,12 +29,7 @@ const packSchema = new mongoose.Schema(
 
         weight: {
             type: [String],
-            enum: ["250g", "500g", "1kg"]
-        },
-
-        kindOfCoffe: {
-            type:[String],
-            enum: ["caffeine", "decaffeinated"]
+            required: ["250g", "500g", "1kg"]
         },
 
         product: {

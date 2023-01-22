@@ -1,14 +1,14 @@
 const express = require('express');
-
-
+const cors = require('cors');
+const passport = require('passport');
 
 const db = require('./src/utils/db');
 db.connectDB();
 
 //All routes import
+const userRoutes = require('./src/API/users/user.routes');
 const indexRoutes = require ('./src/API/index/index.routes');
 const producersRoutes = require('./src/API/producers/producer.routes');
-const userRoutes = require('./src/API/users/user.routes');
 const coffeesRoutes = require('./src/API/coffees/coffee.routes');
 const packsRoutes = require('./src/API/packs/pack.routes');
 
@@ -17,20 +17,37 @@ const PORT = 8000;
 const server = express ();
 
 //Admite peticiones desde otro servidor, front o app. 
-// server.use(cors());
+server.use(cors());
 
 //Transformar el contenido o cuerpo de las peticones POST (req.body)
 server.use(express.json());
 server.use(express.urlencoded( { extended: true }));
 
+//Autentificación
+server.use(passport.initialize());
+
+
 
 
 //Configuración de todas las rutas de nuestro servidor
+server.use('/users', userRoutes);
 server.use('/' ,indexRoutes);
 server.use('/coffees', coffeesRoutes);
 server.use('/producers', producersRoutes);
-server.use('/users', userRoutes);
 server.use('/packs', packsRoutes);
+
+//Por aquí pasan todas las rutas que no existen. 
+server.use('*', (req, res, next) => {
+    return res.status(404).json('No se encuentra la URL. Prueba a poner otra URL')
+})
+
+//Cotrolador de errores
+
+server.use((error, req, res, next) => {
+    const status = error.status || 500;
+    const message = error.message || 'Unexpected Error!';
+    return res.status(status).json(message);
+})
 
 server.listen(PORT,() => {
     console.log(`Servidor llenito de café funcionando a máxima potencia en http://localhost:${PORT}`)

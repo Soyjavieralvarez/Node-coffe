@@ -7,19 +7,25 @@ const producerSchema = new mongoose.Schema(
             required: [true, 'Debes poner el nombre del productor']
         },
 
+        nameCoffee:{
+            type:String,
+            required: [true, 'Debes poner el nombre del café']
+
+        },
+
         contactEmail: {
             type: String,
-            required: true,
+            required: [true, 'Debes poner el email']
         },
 
         country: {
             type: String,
-            required: true,
+            required: [true, 'Debes poner el país']
         },
 
         region: {
             type: String,
-            required: true,
+            required: [true, 'Debes poner la región']
         },
 
         product: {

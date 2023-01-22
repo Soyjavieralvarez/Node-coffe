@@ -3,11 +3,10 @@ const mongoose = require('mongoose');
 const coffeeSchema = new mongoose.Schema(
     {
      //Guardamos una ID, que haga referencia a un elemento creado en la colección producer.
-        nameCoffee: {
+        nameCoffee: { 
             type:mongoose.Types.ObjectId,
             ref: "producers",
         },
-
         // image: {
         //     type:String,
         // },
@@ -21,7 +20,7 @@ const coffeeSchema = new mongoose.Schema(
         },
 
         weight: {
-            type: String,
+            type: [String],
             required: ['250g', '500g', '1kg']
         },
 

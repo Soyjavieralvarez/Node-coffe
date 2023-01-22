@@ -9,7 +9,6 @@ const indexGet = async (req, res, next)=>{
     }
 };
 
-
 const getById = async (req,res,next) => {
     try {
         const { id } = req.params;
@@ -32,7 +31,7 @@ const getById = async (req,res,next) => {
 
 const createPost = async (req, res, next)=> {
     try {
-        const producerToBeCreated = new producer(req.body);
+        const producerToBeCreated = new Producer(req.body);
     
         const created = await producerToBeCreated.save();
     

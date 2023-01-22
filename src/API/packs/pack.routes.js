@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/packs', controller.indexGet)
 
 //ruta: /producers/{id}
-router.get('/:id', controller.getById)
+// router.get('/:id', controller.getById)
 
 //ruta: //packs/name
 //? router.get('/getByNamePack/:name', controller.getByName)
@@ -15,10 +15,10 @@ router.get('/:id', controller.getById)
 //ruta: /packs/create
 router.post('/createPack', controller.createPost)
 
-//ruta: /packs/edit
-router.put('/edit/:id', controller.editPut);
+// //ruta: /packs/edit
+// router.put('/edit/:id', controller.editPut);
 
-//ruta: /packs/delete/{id}
-router.delete('/delete/:id', controller.deletePack)
+// //ruta: /packs/delete/{id}
+// router.delete('/delete/:id', controller.deletePack)
 
 module.exports = router;
