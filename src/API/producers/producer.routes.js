@@ -10,7 +10,7 @@ router.get('/', controller.indexGet);
 router.get('/:id', controller.getById)
 
 //ruta: //producers/name
-router.get('/getByNameCoffe/:name', controller.getById)
+//? router.get('/getByNameCoffe/:name', controller.getById)
 
 //ruta: /producers/create
 router.post('/create', controller.createPost)

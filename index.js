@@ -1,25 +1,36 @@
 const express = require('express');
-const db = require('./src/utils/db')
 
+
+
+const db = require('./src/utils/db');
 db.connectDB();
 
 //All routes import
 const indexRoutes = require ('./src/API/index/index.routes');
 const producersRoutes = require('./src/API/producers/producer.routes');
+const userRoutes = require('./src/API/users/user.routes');
+const coffeesRoutes = require('./src/API/coffees/coffee.routes');
+const packsRoutes = require('./src/API/packs/pack.routes');
 
 const PORT = 8000;
 
 const server = express ();
+
+//Admite peticiones desde otro servidor, front o app. 
+// server.use(cors());
 
 //Transformar el contenido o cuerpo de las peticones POST (req.body)
 server.use(express.json());
 server.use(express.urlencoded( { extended: true }));
 
 
+
 //Configuración de todas las rutas de nuestro servidor
 server.use('/' ,indexRoutes);
-server.use('/producers', producersRoutes)
-
+server.use('/coffees', coffeesRoutes);
+server.use('/producers', producersRoutes);
+server.use('/users', userRoutes);
+server.use('/packs', packsRoutes);
 
 server.listen(PORT,() => {
     console.log(`Servidor llenito de café funcionando a máxima potencia en http://localhost:${PORT}`)

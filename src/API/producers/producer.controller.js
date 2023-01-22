@@ -1,8 +1,13 @@
 const Producer = require('./producer.model');
 
-const indexGet = (req, res, next)=>{
-    return res.status(200).json('Ok, producers routes working');
-}
+const indexGet = async (req, res, next)=>{
+    try {
+        const producers = await Producer.find();
+        return res.status(200).json(producers)
+    }catch(error) {
+        return next (error)
+    }
+};
 
 
 const getById = async (req,res,next) => {
@@ -15,15 +20,15 @@ const getById = async (req,res,next) => {
     }
 }
 
-const getByName = async (req, res, next) => {
-    try {
-        const { name } = req.params;
-        const found = await Producer.find({name: nameCoffee});
-        return res.status(200).json(found);
-    }catch (error) {
-        return next(error)
-    }
-};
+// const getByName = async (req, res, next) => {
+//     try {
+//         const { name } = req.params;
+//         const found = await Producer.find({name: nameCoffee});
+//         return res.status(200).json(found);
+//     }catch (error) {
+//         return next(error)
+//     }
+// };
 
 const createPost = async (req, res, next)=> {
     try {
@@ -70,7 +75,7 @@ const deleteProducer = async (req, res, next) => {
 module.exports = {
     indexGet,
     getById,
-    getByName,
+    // getByName,
     createPost,
     editPut,
     deleteProducer

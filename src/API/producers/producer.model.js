@@ -7,11 +7,6 @@ const producerSchema = new mongoose.Schema(
             required: [true, 'Debes poner el nombre del productor']
         },
 
-        nameCoffee:{
-            type: String,
-            required: [true, 'Debes poner el nombre del productor']
-        },
-
         contactEmail: {
             type: String,
             required: true,
