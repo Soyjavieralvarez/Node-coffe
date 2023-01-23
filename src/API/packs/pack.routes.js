@@ -4,7 +4,7 @@ const controller = require('./pack.controller');
 const router = express.Router();
 
 //ruta: /packs
-router.get('/packs', controller.indexGet)
+router.get('/', controller.indexGet)
 
 //ruta: /producers/{id}
 // router.get('/:id', controller.getById)

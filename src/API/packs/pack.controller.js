@@ -2,7 +2,7 @@ const Pack = require('./pack.model');
 
 const indexGet = async (req, res, next) => {
     try {
-        const allPacks = await Pack.find().populate('nameCoffe1').populate('nameCoffe2').populate("nameCoffe3");
+        const allPacks = await Pack.find().populate('nameCoffe1').populate('nameCoffe2').populate('nameCoffe3');
         return res.status(200).json(allPacks);
     }catch (error) {
         return next(error);
